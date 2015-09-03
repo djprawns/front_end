@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ZO Agents</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/md-table.css">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel='stylesheet prefetch' href='assets/css/angular/angular-material.css'>
+</head>
+
+<body ng-app="AgentApp" ng-controller="AgentController">
+    <div class="toolbardemoBasicUsage">
+        <md-content>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <!-- <md-button class="md-icon-button" aria-label="Settings">
+                        <md-icon md-svg-icon="./assets/svg/menu.svg"></md-icon>
+                    </md-button> -->
+                    <h2>
+                    <span>ZO Agents</span>
+                    </h2>
+                    <span flex=""></span>
+                    <md-progress-circular class="md-warn" md-mode="indeterminate" md-diameter="15" ng-hide="hideSpan"></md-progress-circular>
+                    <span flex=""></span>
+                    <md-button class="md-raised md-success" aria-label="Favorite" style="margin-right:5px;" ng-click="addAgent($event)" ng-show="isActive('/')">
+                        Add Agent
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </md-content>
+    </div>
+    <!-- <div ng-controller="DataController"> -->
+        <ng-view></ng-view>
+    <!-- </div> -->
+</body>
+
+<script src='assets/js/angular/angular.js'></script>
+<script src='assets/js/angular/angular-animate.js'></script>
+<script src='assets/js/angular/angular-route.js'></script>
+<script src='assets/js/angular/angular-aria.js'></script>
+<script src='assets/js/angular/angular-messages.js'></script>
+<script src='assets/js/angular/angular-material.js'></script>
+
+
+<script src='app/app.module.js'></script>
+<script src='app/app.routes.js'></script>
+<script src='app/components/home/AgentController.js'></script>
+<script src='app/components/home/CityDropdownController.js'></script>
+<script src='app/components/home/DataController.js'></script>
+<script src='app/components/agent/InfoController.js'></script>
+<script src='app/components/agent/EditController.js'></script>
+<script src='app/shared/SharedDataService.js'></script>
+
+</html>

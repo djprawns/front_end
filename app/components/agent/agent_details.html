@@ -1,0 +1,208 @@
+<div layout="row" layout-wrap>
+    <div flex="20">
+        <md-card>
+            <md-card-content>
+                <p style="margin:0;">{{agentId}}</p>
+                <p style="margin:0;">Mobile: - {{mobile}}</p>
+                <p style="margin:0;">Email: - {{email}}</p>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div flex>
+        <div>
+            <md-content class="md-padding">
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="booking details">
+                        <md-content class="md-padding">
+                            <div id="demo" style="margin:0;">
+                                <div class="table-responsive-vertical shadow-z-1" style="">
+                                    <table id="table" class="table table-hover table-mc-light-blue" style="">
+                                        <thead>
+                                            <tr>
+                                                <th>Shortcode</th>
+                                                <th>Hotel Details</th>
+                                                <th>Room Nights</th>
+                                                <th>Guests</th>
+                                                <th>Amount</th>
+                                                <th>Payment Mode</th>
+                                                <th>Commission Due</th>
+                                                <th>Booking Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="booking in bookings">
+                                                <td data-title="ID"><a href="">{{booking.shortcode}}</a></td>
+                                                <td data-title="Name">{{booking.hotel}}</td>
+                                                <td data-title="Link">{{booking.roomnights}}</td>
+                                                <td data-title="Status">{{booking.pax}}</td>
+                                                <td data-title="Created">{{booking.total_amount}}</td>
+                                                <td data-title="Created">{{booking.payment_mode}}</td>
+                                                <td data-title="Created">{{booking.commission}}</td>
+                                                <td data-title="Created">{{booking.time_create}}</td>
+                                                <td data-title="Created">{{booking.status}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="agent details">
+                        <md-content class="md-padding">
+                            <div ng-controller="EditController" layout="column">
+                                <md-content md-theme="docs-dark" layout-padding layout="row" layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Name</label>
+                                        <input ng-model="user.title" ng-disabled="true">
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Email</label>
+                                        <input ng-model="user.email" type="email" ng-disabled="true">
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Alt. Email</label>
+                                        <input ng-model="user.alt_email" type="email" ng-disabled="true">
+                                    </md-input-container>
+                                </md-content>
+                                <md-content layout-padding>
+                                    <form name="userForm">
+                                        <div layout layout-sm="column">
+                                            <!-- <md-input-container style="width:80%">
+                                                <label>Company (Disabled)</label>
+                                                <input ng-model="user.company" disabled>
+                                            </md-input-container> -->
+                                            <md-input-container flex>
+                                                <label>Number</label>
+                                                <input ng-model="user.number" ng-disabled="true">
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Alt. Number</label>
+                                                <input ng-model="user.alt_number" ng-disabled="true">
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Created</label>
+                                                <input type="date" ng-model="user.submissionDate" ng-disabled="true">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container>
+                                                <!-- <label>Advanced</label> -->
+                                                <md-checkbox aria-label="Checkbox 1" ng-disabled="true">
+                                                    Advanced
+                                                </md-checkbox>
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Id Proof Type</label>
+                                                <md-select ng-model="user.id_type" ng-disabled="true">
+                                                    <md-option value="driver">Drivers License</md-option>
+                                                    <md-option value="passport">Passport</md-option>
+                                                    <md-option value="voter">Voters Id Card</md-option>
+                                                    <md-option value="aadhar">Aadhar Card</md-option>
+                                                    <md-option value="other">Other</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Address</label>
+                                                <input ng-model="user.address" columns="1" ng-disabled="true">
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Gender</label>
+                                                <md-select ng-model="user.gender" ng-disabled="true">
+                                                    <md-option value="M">Male</md-option>
+                                                    <md-option value="F">Female</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Date of Birth</label>
+                                                <input type="date" ng-model="user.dob" ng-disabled="true">
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Fathers Name</label>
+                                                <input type="text" ng-model="user.fathers_name" ng-disabled="true">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>City</label>
+                                                <md-select ng-model="user.city" ng-disabled="true">
+                                                    <md-option value="Delhi">Delhi</md-option>
+                                                    <md-option value="Chennai">Chennai</md-option>
+                                                    <md-option value="Bangalore">Bangalore</md-option>
+                                                    <md-option value="Mumbai">Mumbai</md-option>
+                                                    <md-option value="Lucknow">Lucknow</md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>Locality</label>
+                                                <input ng-model="user.locality" ng-disabled="true">
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Inductor</label>
+                                                <input ng-model="user.inductor" ng-disabled="true"></input>
+                                            </md-input-container>
+                                            <md-input-container flex>
+                                                <label>City Rep</label>
+                                                <input ng-model="user.city_rep" ng-disabled="true"></input>
+                                            </md-input-container>
+                                        </div>
+                                    </form>
+                                </md-content>
+                            </div>
+                            <md-button class="md-accent md-fab md-fab-bottom-right">
+                                Edit
+                            </md-button>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="analytics">
+                        <md-content class="md-padding">
+                            We will have analytics stuff here. Work In Progress.
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="payment details">
+                        <md-content class="md-padding">
+                            <div id="demo" style="margin:0;">
+                                <div class="table-responsive-vertical shadow-z-1" style="">
+                                    <table id="table" class="table table-hover table-mc-light-blue" style="">
+                                        <thead>
+                                            <tr>
+                                                <th>Transaction Id</th>
+                                                <th>Transaction Type</th>
+                                                <th>Card Balance</th>
+                                                <th>Response Code</th>
+                                                <th>Status</th>
+                                                <th>Organization Balance</th>
+                                                <th>Request Failed</th>
+                                                <th>Request Started</th>
+                                                <th>Request Completed</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="booking in bookings">
+                                                <td data-title="ID"><a href="">{{booking.shortcode}}</a></td>
+                                                <td data-title="Name">{{booking.hotel}}</td>
+                                                <td data-title="Link">{{booking.roomnights}}</td>
+                                                <td data-title="Status">{{booking.pax}}</td>
+                                                <td data-title="Created">{{booking.total_amount}}</td>
+                                                <td data-title="Created">{{booking.payment_mode}}</td>
+                                                <td data-title="Created">{{booking.commission}}</td>
+                                                <td data-title="Created">{{booking.time_create}}</td>
+                                                <td data-title="Created">{{booking.status}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
+        </div>
+    </div>
+</div>

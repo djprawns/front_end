@@ -1,0 +1,70 @@
+<div id="demo">
+    <div class="table-responsive-vertical shadow-z-1">
+        <table id="table" class="table table-hover table-mc-light-blue">
+            <thead>
+                <tr>
+                    <div class="toolbardemoBasicUsage">
+                        <md-content>
+                            <md-toolbar style="background-color:white;">
+                                <div class="md-toolbar-tools">
+                                    <h2>
+                                        <span>Agents ({{total_agents}})</span>
+                                    </h2>
+                                    <span flex=""></span>
+                                    <!-- <md-progress-circular class="md-warn" md-mode="indeterminate" md-diameter="15" ng-hide="hideSpan"></md-progress-circular> -->
+                                    <span flex=""></span>
+                                    <md-button ng-click="showSearch = !showSearch" class="md-icon-button" aria-label="Back">
+                                        <md-icon md-svg-icon="./assets/img/material-design-icons/svg/search100.svg" style="color: black;"></md-icon>
+                                    </md-button>
+                                    <md-input-container md-theme="input" flex ng-show="showSearch">
+                                        <label>&nbsp;</label>
+                                        <input ng-model="searchAgents" placeholder="enter search">
+                                    </md-input-container>
+                                </div>
+                            </md-toolbar>
+                        </md-content>
+                    </div>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th>
+                        <a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+                        Name
+                            <span ng-show="sortType == 'name' && !sortReverse"></span>
+                            <span ng-show="sortType == 'name' && sortReverse"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="" ng-click="sortType = 'zo_credits'; sortReverse = !sortReverse">
+                        Credits
+                            <span ng-show="sortType == 'zo_credits' && !sortReverse"></span>
+                            <span ng-show="sortType == 'zo_credits' && sortReverse"></span>
+                        </a>
+                            </th>
+                    <th>Number</th>
+                    <th>
+                        <a href="" ng-click="sortType = 'total_roomnights'; sortReverse = !sortReverse">
+                        Room Nights
+                            <span ng-show="sortType == 'total_roomnights' && !sortReverse"></span>
+                            <span ng-show="sortType == 'total_roomnights' && sortReverse"></span>
+                        </a></th>
+                    <!-- <th>Commission Earned</th> -->
+                    <th>Archive</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="agent in agents | orderBy:sortType:sortReverse | filter:searchAgents">
+                    <td data-title="name"><a href="#/agent/{{agent.agent_id}}">{{agent.name}}</a></td>
+                    <td data-title="zo_credits">{{agent.zo_credits}}</td>
+                    <td data-title="phone">{{agent.agent}}</td>
+                    <td data-title="total_roomnights">{{agent.total_roomnights}}</td>
+                    <!-- <td data-title="commission_earned">{{agent.commission_earned}}</td> -->
+                    <td data-title="Created" style="padding:0; padding-top:2px;">
+                        <md-button class="md-raised md-primary" ng-click="showConfirm($event, agent)" style="font-size: 10px; width: 30%;">Archive</md-button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
